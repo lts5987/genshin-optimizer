@@ -130,13 +130,12 @@ Object.assign(FormulaText, {
 })
 Object.entries(amplifyingReactions).forEach(([reaction, [name, variants]]) => {
   Object.entries(variants).forEach(([ele, baseMulti]) => {
-    // Move them to the right position
     FormulaText[`${ele}_${reaction}_multi`] = (o) => <span>{baseMulti} * ( 100% + {f(o, "amplificative_dmg_")} + {f(o, `${reaction}_dmg_`)} )</span>
-
     Object.entries(hitTypes).forEach(([type, typeName]) => {
       FormulaText[`${ele}_${reaction}_elemental_${type}`] = (o) => <span>{f(o, `${ele}_elemental_${type}`)} * {f(o, `${ele}_${reaction}_multi`)}</span>
       Object.entries(hitMoves).forEach(([move, moveName]) => {
-        FormulaText[`${ele}_${reaction}_${move}_${type}`] = (o) => <span>{f(o, `${ele}_${move}_${type}`)} * {f(o, `${ele}_${reaction}_multi`)}</span>
+        FormulaText[`${ele}_${reaction}_${move}_${type}_multi`] = (o) => <span>{f(o, `${ele}_${reaction}_elemental_${type}`)} * {f(o, `${ele}_${move}_${type}_multi`)}</span>
+        FormulaText[`${ele}_${reaction}_${move}_${type}`] = (o) => <span>{f(o, "finalATK")} * {f(o, `${ele}_${reaction}_${move}_${type}_multi`)}</span>
       })
     })
   })
