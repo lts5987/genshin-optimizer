@@ -4,8 +4,8 @@ import { Formulas, StatData } from "./StatData"
 function GetFormulaDependency(formula) {
   const dependency = new Set()
   formula(
-    new Proxy({}, { get: (target, prop, receiver) => { dependency.add(prop) } }),
-    new Proxy({}, { get: (target, prop, receiver) => { dependency.add(prop) } }))
+    new Proxy({}, { get: (target, prop, receiver) => { dependency.add(prop); return 0 } }),
+    new Proxy({}, { get: (target, prop, receiver) => { dependency.add(prop); return 0 } }))
   return [...dependency]
 }
 const formulaKeyDependency = Object.freeze(Object.fromEntries(
