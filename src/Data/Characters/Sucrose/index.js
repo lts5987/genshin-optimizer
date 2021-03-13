@@ -104,7 +104,7 @@ const char = {
           </p>
           <p className="mb-2">
             If the Wind Spirit comes into contact with{' '}
-              <span className="text-pyro">Hydro</span>/
+              <span className="text-hydro">Hydro</span>/
               <span className="text-pyro">Pyro</span>/
               <span className="text-cryo">Cryo</span>/
               <span className="text-electro">Electro</span>
@@ -118,11 +118,6 @@ const char = {
           formula: formula.burst.dot,
           variant: (tlvl, stats) => getTalentStatKeyVariant("burst", stats),
         }, {
-          text: "Additional Elemental DMG",
-          formulaText: (tlvl, stats) => <span>{data.burst.additionalElementalDMG[tlvl]}% {Stat.printStat(getTalentStatKey("burst", stats), stats)}</span>,
-          formula: formula.burst.additionalElementalDMG,
-          variant: (tlvl, stats) => getTalentStatKeyVariant("burst", stats),
-        }, {
           text: "Duration",
           value: "6s"
         }, {
@@ -131,7 +126,20 @@ const char = {
         }, {
           text: "Energy Cost",
           value: "80"
-        }]
+        }],
+        conditional: (["hydro", "pyro", "cryo", "electro"]).map(eleKey => ({
+          type: "character",
+          conditionalKey: "Absorption",
+          condition: <span><span className={`text-${eleKey}`}><b>{ElementalData[eleKey].name}</b></span> Absorption</span>,
+          sourceKey: "sucrose",
+          maxStack: 1,
+          fields: [{
+            text: "DoT",
+            formulaText: (tlvl, stats) => <span>{(data.burst.dmg_[tlvl])?.toFixed(2)}% {Stat.printStat(`${eleKey}_burst_${stats.hitMode}`, stats)}</span>,
+            formula: formula.burst[`${eleKey}_dmg_bonus`],
+            variant: eleKey
+          }]
+        }))
       }]
     },
     passive1: {

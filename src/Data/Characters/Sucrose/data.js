@@ -31,7 +31,7 @@ export const data = {
   },
   burst: {
     dot: [148, 159.1, 170.2, 185, 196.1, 207.2, 222, 236.8, 251.6, 266.4, 281.2, 296, 314.5, 333, 351.5],
-    additionalElementalDMG: [44, 47.3, 50.6, 55, 58.3, 61.6, 66, 70.4, 74.8, 79.2, 83.6, 88, 93.5, 99, 104.5],
+    dmg_: [44, 47.3, 50.6, 55, 58.3, 61.6, 66, 70.4, 74.8, 79.2, 83.6, 88, 93.5, 99, 104.5],
   }
 }
 const formula = {
@@ -44,9 +44,10 @@ const formula = {
     [name, (tlvl, stats) => basicDMGFormula(arr[tlvl], stats, "plunging")])),
   skill: Object.fromEntries(Object.entries(data.skill).map(([name, arr]) =>
     [name, (tlvl, stats) => basicDMGFormula(arr[tlvl], stats, "skill")])),
-  burst: Object.fromEntries([
-    ...Object.entries(data.burst).map(([name, arr]) =>
-      [name, (tlvl, stats) => basicDMGFormula(arr[tlvl], stats, "burst")]),
-  ]),
+  burst: {
+    dot: (tlvl, stats) => basicDMGFormula(data.burst.dot[tlvl], stats, "burst"),
+    ...Object.fromEntries((["hydro", "pyro", "cryo", "electro"]).map(ele =>
+      [`${ele}_dmg_bonus`, (tlvl, stats) => [s => { return (data.burst.dmg_[tlvl] / 100) * s[`${ele}_burst_${stats.hitMode}`] }, [`${ele}_burst_${stats.hitMode}`]]])),//not optimizationTarget, dont need to precompute
+  },
 }
 export default formula
