@@ -115,12 +115,12 @@ const char = {
           variant: (tlvl, stats) => getTalentStatKeyVariant("burst", stats),
         }, (con, a) => a >= 1 && {
           text: "Pounding Surprise DMG",
-          formulaText: (tlvl, stats) => <span>{data.burst.dmg[tlvl]}% {Stat.printStat(getTalentStatKey("burst", stats), stats)} * 150%</span>,
+          formulaText: (tlvl, stats) => <span>150% x {data.burst.dmg[tlvl]}% {Stat.printStat(getTalentStatKey("burst", stats), stats)} * 150%</span>,
           formula: formula.burst.dmgPounding,
           variant: (tlvl, stats) => getTalentStatKeyVariant("burst", stats),
         }, (con) => con >= 1 && {
           text: "Chained Reactions DMG",
-          formulaText: (tlvl, stats) => <span>{data.burst.dmg[tlvl]}% {Stat.printStat(getTalentStatKey("burst", stats), stats)} * 120%</span>,
+          formulaText: (tlvl, stats) => <span>120% x {data.burst.dmg[tlvl]}% {Stat.printStat(getTalentStatKey("burst", stats), stats)} * 120%</span>,
           formula: formula.burst.dmgChained,
           variant: (tlvl, stats) => getTalentStatKeyVariant("burst", stats),
         }, {
