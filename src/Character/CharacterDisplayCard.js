@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import Row from 'react-bootstrap/Row';
 import Artifact from '../Artifact/Artifact';
+import WIPComponent from '../Components/WIPComponent';
 import { WeaponLevelKeys } from '../Data/WeaponData';
 import { DatabaseInitAndVerify } from '../DatabaseUtil';
 import { deepClone } from '../Util/Util';
@@ -87,12 +88,15 @@ export default class CharacterDisplayCard extends React.Component {
     this.props.forceUpdate ? this.props.forceUpdate() : this.forceUpdate();
   }
   setCharacterKey = (characterKey) => {
-    this.props?.setCharacterKey?.(characterKey)
     let state = CharacterDisplayCard.getInitialState()
     let char = CharacterDatabase.get(characterKey)
     if (char) state = { ...state, ...char }
-    else state = { ...state, characterKey, weapon: CharacterDisplayCard.getIntialWeapon(characterKey) }
+    else {
+      state = { ...state, characterKey, weapon: CharacterDisplayCard.getIntialWeapon(characterKey) }
+      this.updateCharacter(this.state)
+    }
     this.setState(state)
+    this.props?.setCharacterKey?.(characterKey)
   }
 
   setLevelKey = (levelKey) =>
@@ -118,14 +122,17 @@ export default class CharacterDisplayCard extends React.Component {
       Artifact.getDataImport(),
     ]).then(() => this.forceUpdate())
   }
+  updateCharacter(state) {
+    state = deepClone(state)
+    delete state.compareAgainstEquipped
+    CharacterDatabase.updateCharacter(state)
+  }
   componentDidUpdate(prevProps) {
-    if (prevProps.characterKey !== this.props.characterKey)
+    if (prevProps.characterKey !== this.props.characterKey && this.props.characterKey !== this.state.characterKey)
       this.setCharacterKey(this.props.characterKey)
     if (this.props.editable && this.state.characterKey) {
       //save this.state as character to character db.
-      const state = deepClone(this.state)
-      delete state.compareAgainstEquipped
-      CharacterDatabase.updateCharacter(state)
+      this.updateCharacter(this.state)
     }
   }
   render() {
@@ -209,10 +216,17 @@ export default class CharacterDisplayCard extends React.Component {
               <Nav.Link eventKey="artifacts">{newBuild ? "Current Artifacts" : "Artifacts"}</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="talent" disabled={process.env.NODE_ENV !== "development" && !Character.hasTalentPage(characterKey)}>Talents {!Character.hasTalentPage(characterKey) && <Badge variant="warning">WIP</Badge>}</Nav.Link>
+              {(process.env.NODE_ENV !== "development" && !Character.hasTalentPage(characterKey)) ?
+                <WIPComponent>
+                  <Nav.Link eventKey="talent" disabled>Talents <Badge variant="warning">WIP</Badge></Nav.Link>
+                </WIPComponent> :
+                <Nav.Link eventKey="talent">Talents</Nav.Link>
+              }
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="team" disabled>Team <Badge variant="warning">WIP</Badge></Nav.Link>
+              <WIPComponent>
+                <Nav.Link eventKey="team" disabled>Team <Badge variant="warning">WIP</Badge></Nav.Link>
+              </WIPComponent>
             </Nav.Item>
           </Nav>
           <Tab.Content>
