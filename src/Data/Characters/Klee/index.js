@@ -53,7 +53,7 @@ const char = {
         }, {
           text: `Stamina Cost`,
           value: 50,
-        }]
+        }],
       }, {
         text: <span><strong>Plunging Attack</strong> Gathering the power of <span className="text-pyro">Pyro</span>, Klee plunges towards the ground from mid-air, damaging all opponents in her path. Deals <span className="text-pyro">AoE Pyro DMG</span> upon impact with the ground.</span>,
         fields: [{
@@ -113,16 +113,6 @@ const char = {
           formulaText: (tlvl, stats) => <span>{data.burst.dmg[tlvl]}% {Stat.printStat(getTalentStatKey("burst", stats), stats)}</span>,
           formula: formula.burst.dmg,
           variant: (tlvl, stats) => getTalentStatKeyVariant("burst", stats),
-        }, (con, a) => a >= 1 && {
-          text: "Pounding Surprise DMG",
-          formulaText: (tlvl, stats) => <span>150% x {data.burst.dmg[tlvl]}% {Stat.printStat(getTalentStatKey("burst", stats), stats)} * 150%</span>,
-          formula: formula.burst.dmgPounding,
-          variant: (tlvl, stats) => getTalentStatKeyVariant("burst", stats),
-        }, (con) => con >= 1 && {
-          text: "Chained Reactions DMG",
-          formulaText: (tlvl, stats) => <span>120% x {data.burst.dmg[tlvl]}% {Stat.printStat(getTalentStatKey("burst", stats), stats)} * 120%</span>,
-          formula: formula.burst.dmgChained,
-          variant: (tlvl, stats) => getTalentStatKeyVariant("burst", stats),
         }, {
           text: "Duration",
           value: "10s",
@@ -138,7 +128,20 @@ const char = {
     passive1: {
       name: "Pounding Surprise",
       img: passive1,
-      document: [{ text: <span>When <b>Jumpy Dumpty</b> and <b>Normal Attacks</b> deal DMG, Klee has a 50% chance to obtain an Explosive Spark. This Explosive Spark is consumed by the next Charged Attack, which costs no Stamina and deals 50% increased DMG.</span> }],
+      document: [{
+        text: <span>When <b>Jumpy Dumpty</b> and <b>Normal Attacks</b> deal DMG, Klee has a 50% chance to obtain an Explosive Spark. This Explosive Spark is consumed by the next Charged Attack, which costs no Stamina and deals 50% increased DMG.</span>,
+        conditional: (tlvl, c, a) => a >= 1 && {
+          type: "character",
+          conditionalKey: "Pounding Surprise",
+          condition: "has Explosive Spark",
+          sourceKey: "klee",
+          maxStack: 1,
+          stats: {
+            charged_dmg_: 50,
+          },
+          fields: [{ text: "Next Charged attack cost no stamina" }]
+        }
+      }],
     },
     passive2: {
       name: "Sparkling Burst",
@@ -153,7 +156,15 @@ const char = {
     constellation1: {
       name: "Chained Reactions",
       img: c1,
-      document: [{ text: <span>Attacks and Skills have a certain chance to summon sparks that bombard opponents, dealing DMG equal to 120% of Sparks 'n' Splash's DMG.</span> }],
+      document: [{
+        text: <span>Attacks and Skills have a certain chance to summon sparks that bombard opponents, dealing DMG equal to 120% of Sparks 'n' Splash's DMG.</span>,
+        fields: [(con) => con >= 1 && {
+          text: "Chained Reactions DMG",
+          formulaText: (tlvl, stats) => <span>120% x {data.burst.dmg[stats.talentLevelKeys.burst]}% {Stat.printStat(getTalentStatKey("burst", stats), stats)}</span>,
+          formula: formula.constellation1.dmgChained,
+          variant: (tlvl, stats) => getTalentStatKeyVariant("burst", stats),
+        },]
+      }],
     },
     constellation2: {
       name: "Explosive Frags",
