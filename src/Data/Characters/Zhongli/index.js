@@ -191,7 +191,7 @@ const char = {
           condition: "Enemies near Jade Shield",
           sourceKey: "zhongli",
           maxStack: 1,
-          stats: Object.fromEntries(Object.keys(ElementalData).map(k => [`${k}_res_`, 20])),//TODO: party buff
+          stats: Object.fromEntries(Object.keys(ElementalData).map(k => [`${k}_enemyRes_`, -20])),//TODO: party buff
         }
       }],
     },
