@@ -1,6 +1,6 @@
-import { PreprocessFormulas, StatData } from "../../StatData"
-import { GetDependencies } from "../../StatDependency"
-import characters from "../../Data/Characters";
+import { PreprocessFormulas, StatData } from "../../../StatData"
+import { GetDependencies } from "../../../StatDependency"
+import characters from "..";
 
 function _test(calculated, experiment, epsilon = 0.006) {
   if (experiment < epsilon && calculated < epsilon) {
@@ -150,8 +150,7 @@ describe(`Testing StatData`, () => {
       // _test(formula.skill.resonanceDMGHP(talents.skill, stat)[0](stat), NaN)
       // _test(formula.skill.holdDMGHP(talents.skill, stat)[0](stat), NaN)
       // _test(formula.skill.shield(talents.skill, stat)[0](stat), NaN)
-
-      // _test(formula.burst.dmgHP(talents.burst, stat)[0](stat), NaN) // Inaccurate, off by ~330
+      // _test(formula.burst.dmgHP(talents.burst, stat)[0](stat), NaN)
     })
 
     // No arti, no crit, with jade shield
@@ -211,7 +210,7 @@ describe(`Testing StatData`, () => {
       // _test(formula.skill.holdDMGHP(talents.skill, stat)[0](stat), NaN)
       // _test(formula.skill.shield(talents.skill, stat)[0](stat), NaN)
 
-      // _test(formula.burst.dmgHP(talents.burst, stat)[0](stat), NaN) // Inaccurate, off by ~330
+      // _test(formula.burst.dmgHP(talents.burst, stat)[0](stat), NaN)
     })
 
     // Arti, no crit, no jade shield
