@@ -551,7 +551,7 @@ function parseSetKey(recognition, defVal = "") {
   for (const text of texts) {
     let text2 = text.replace(/\r?\n|\r|\s|:/g, '')
     for (const key of Artifact.getSetKeys()) {
-      if (text2 === Artifact.getSetName(key))
+      if (text2.search(Artifact.getSetName(key)) > -1)
         return key
     }
   }
@@ -563,7 +563,7 @@ function parseSlotKey(recognition, defVal = "") {
   for (const text of texts) {
     let text2 = text.replace(/\r?\n|\r|\s/g, '')
     for (const key of Artifact.getSlotKeys())
-      if (text2 === Artifact.getSlotName(key))
+      if (text2.search(Artifact.getSlotName(key)) > -1)
         return key;
   }
 }

@@ -25,7 +25,6 @@ let artifact = {//Icebreaker
       stats: { cryo_dmg_: 15 }
     },
     4: {
-      text: <span>When a character attacks an enemy affected by <span className="text-cryo">Cryo</span>, their CRIT Rate is increased by 20%. If the enemy is Frozen, CRIT Rate is increased by an additional 20%</span>,
       text: <span>攻击处于<span className="text-cryo">冰元素</span>影响下的敌人时，暴击率提高20%；若敌人处于冻结状态下，则暴击率额外提高20%。</span>,
       conditional: [{
         type: "artifact",
