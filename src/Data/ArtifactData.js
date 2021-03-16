@@ -111,11 +111,11 @@ const ArtifactSubstatsMinMax = Object.fromEntries(Object.entries(ArtifactSubStat
   }]))
 
 const ArtifactSlotsData = {
-  flower: { name: "Flower of Life", stats: ["hp"] },
-  plume: { name: "Plume of Death", stats: ["atk"] },
-  sands: { name: "Sands of Eon", stats: ["hp_", "def_", "atk_", "eleMas", "enerRech_"] },
-  goblet: { name: "Goblet of Eonothem", stats: ["hp_", "def_", "atk_", "eleMas", "physical_dmg_", "anemo_dmg_", "geo_dmg_", "electro_dmg_", "hydro_dmg_", "pyro_dmg_", "cryo_dmg_",] },
-  circlet: { name: "Circlet of Logos", stats: ["hp_", "def_", "atk_", "eleMas", "critRate_", "critDMG_", "heal_"] },
+  flower: { name: "生之花", stats: ["hp"] },
+  plume: { name: "死之羽", stats: ["atk"] },
+  sands: { name: "时之沙", stats: ["hp_", "def_", "atk_", "eleMas", "enerRech_"] },
+  goblet: { name: "空之杯", stats: ["hp_", "def_", "atk_", "eleMas", "physical_dmg_", "anemo_dmg_", "geo_dmg_", "electro_dmg_", "hydro_dmg_", "pyro_dmg_", "cryo_dmg_",] },
+  circlet: { name: "理之冠", stats: ["hp_", "def_", "atk_", "eleMas", "critRate_", "critDMG_", "heal_"] },
 };
 
 export {

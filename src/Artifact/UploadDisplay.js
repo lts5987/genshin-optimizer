@@ -70,8 +70,8 @@ export default function UploadDisplay(props) {
       errorHandler: err => console.error(err)
     });
     await tworker.load();
-    await tworker.loadLanguage('eng');
-    await tworker.initialize('eng');
+    await tworker.loadLanguage('eng+chi_sim');
+    await tworker.initialize('eng+chi_sim');
     let rec = await tworker.recognize(image);
     await tworker.terminate();
     if (process.env.NODE_ENV === "development" && debug) console.log(rec)
@@ -99,12 +99,14 @@ export default function UploadDisplay(props) {
       // artifact set, scan the greenish text
       ocrImage(imageDataToURL(processImageWithBandPassFilter(imageDataObj, { r: 30, g: 160, b: 30 }, { r: 200, g: 255, b: 200 }, { region: "bot", mode: "bw" })), setArtSetProgress, setArtSetProgVariant),
     ]
-
     let [whiteparsed, substatOCRText, setOCRText] = await Promise.all(awaits)
 
     let setKey = parseSetKey(setOCRText)
+    console.log('setKey', setKey, setOCRText)
     let slotKey = parseSlotKey(whiteparsed)
+    console.log('whiteparsed', slotKey, whiteparsed)
     let substats = parseSubstat(substatOCRText)
+    console.log('substatOCRText', substats, substatOCRText)
     let level = NaN//looks like the level isnt consistently parsed. 
     let mainStatKey = parseMainStatKey(whiteparsed)
     let { mainStatValue, unit = "" } = parseMainStatvalue(whiteparsed)
@@ -506,6 +508,7 @@ function parseSubstat(recognition, defVal = null) {
   if (!texts) return defVal
   let matches = []
   for (const text of texts) {
+    let text2 = text.replace(/\r?\n|\r|\s/g, '')
     //parse substats
     Artifact.getSubStatKeys().forEach(key => {
       let regex = null
@@ -513,7 +516,8 @@ function parseSubstat(recognition, defVal = null) {
       let name = Stat.getStatNameRaw(key)
       if (unit === "%") regex = new RegExp(name + "\\s*\\+\\s*(\\d+\\.\\d)%", "im");
       else regex = new RegExp(name + "\\s*\\+\\s*(\\d+,\\d+|\\d+)($|\\s)", "im");
-      let match = regex.exec(text)
+      let match = regex.exec(text2)
+      console.log(match, text2)
       match && matches.push({ value: match[1], unit, key })
     })
   }
@@ -531,33 +535,41 @@ function parseSubstat(recognition, defVal = null) {
 function parseMainStatKey(recognition, defVal = "") {
   let texts = recognition?.data?.lines?.map(line => line.text)
   if (!texts) return defVal
-  for (const text of texts)
+  for (const text of texts) {
+    let text2 = text.replace(/\r?\n|\r|\s/g, '')
     for (const key of Artifact.getMainStatKeys()) {
-      if (text.toLowerCase().includes(Stat.getStatNameRaw(key).toLowerCase()))
+      if (text2.search("击率") > -1) text2 = "暴击率"
+      if (text2.toLowerCase().includes(Stat.getStatNameRaw(key).toLowerCase()))
         return key
       //use fuzzy compare on the ... Bonus texts. heal_ is included.
       if (key.includes("_bonu") && hammingDistance(text.replace(/\W/g, ''), Stat.getStatNameRaw(key).replace(/\W/g, '')) <= 1)
         return key
     }
+  }
   return defVal
 }
 function parseSetKey(recognition, defVal = "") {
   let texts = recognition?.data?.lines?.map(line => line.text)
   if (!texts) return defVal
   //parse for sets
-  for (const text of texts)
-    for (const key of Artifact.getSetKeys())
-      if (hammingDistance(text.replace(/\W/g, ''), Artifact.getSetName(key).replace(/\W/g, '')) <= 2)
+  for (const text of texts) {
+    let text2 = text.replace(/\r?\n|\r|\s|:/g, '')
+    for (const key of Artifact.getSetKeys()) {
+      if (text2 === Artifact.getSetName(key))
         return key
+    }
+  }
 }
 function parseSlotKey(recognition, defVal = "") {
   let texts = recognition?.data?.lines?.map(line => line.text)
   if (!texts) return defVal
   //parse for slot
-  for (const text of texts)
+  for (const text of texts) {
+    let text2 = text.replace(/\r?\n|\r|\s/g, '')
     for (const key of Artifact.getSlotKeys())
-      if (hammingDistance(text.replace(/\W/g, ''), Artifact.getSlotName(key).replace(/\W/g, '')) <= 2)
+      if (text2 === Artifact.getSlotName(key))
         return key;
+  }
 }
 // function parseLevel(text) {
 //   let regex = /\+(\d{1,2})/
@@ -569,11 +581,12 @@ function parseMainStatvalue(recognition, defVal = { mainStatValue: NaN }) {
   let texts = recognition?.data?.lines?.map(line => line.text)
   if (!texts) return defVal
   for (const text of texts) {
+    let text2 = text.replace(/\r?\n|\r|\s/g, '')
     let regex = /(\d+\.\d)%/
-    let match = regex.exec(text)
+    let match = regex.exec(text2)
     if (match) return { mainStatValue: parseFloat(match[1]), unit: "%" }
     regex = /(\d+,\d{3}|\d{2,3})/
-    match = regex.exec(text)
+    match = regex.exec(text2)
     if (match) return { mainStatValue: parseInt(match[1].replace(/,/g, "")) }
   }
   return defVal

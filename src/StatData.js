@@ -5,7 +5,7 @@ const StatData = {
   flat: { name: "", default: 1 },
 
   // Character Stats
-  characterHP: { name: "生命力", pretty: "角色基础生命力", const: true },
+  characterHP: { name: "生命值", pretty: "角色基础生命值", const: true },
   characterDEF: { name: "防御力", pretty: "角色基础防御力", const: true },
   characterATK: { name: "攻击力", pretty: "角色基础攻击力", const: true },
   characterEle: { name: "角色元素", default: "anemo", const: true },
@@ -18,8 +18,8 @@ const StatData = {
   baseATK: { name: "攻击力", pretty: "基础攻击力", const: true }, // characterATK + weaponATK
 
   // Weapon & Artifact Stats
-  hp: { name: "生命力", pretty: "固定生命力" },//flat hp
-  hp_: { name: "生命力", unit: "%", pretty: "生命加成" },
+  hp: { name: "生命值", pretty: "固定生命值" },//flat hp
+  hp_: { name: "生命值", unit: "%", pretty: "生命加成" },
   atk: { name: "攻击力", pretty: "固定攻击力" },
   atk_: { name: "攻击力", unit: "%", pretty: "攻击力加成" },
   def: { name: "防御力", pretty: "固定防御力" },
@@ -27,7 +27,7 @@ const StatData = {
   dmg_: { name: "全伤害加成", unit: "%" },
 
   // Attack-related Character, Weapon & Artifact Stats
-  finalHP: { name: "生命力", pretty: "生命力" },
+  finalHP: { name: "生命值", pretty: "生命值" },
   finalATK: { name: "攻击力", pretty: "攻击力" },
   finalDEF: { name: "防御力", pretty: "防御力" },
 

@@ -4,13 +4,13 @@ import sands from './Item_Sundial_of_Enduring_Jade.png'
 import goblet from './Item_Goblet_of_Chiseled_Crag.png'
 import circlet from './Item_Mask_of_Solitude_Basalt.png'
 let artifact = {
-  name: "Archaic Petra", rarity: [4, 5],
+  name: "悠古的磐岩", rarity: [4, 5],
   pieces: {
-    flower: "Flower of Creviced Cliff",
-    plume: "Feather of Jagged Peaks",
-    sands: "Sundial of Enduring Jade",
-    goblet: "Goblet of Chiseled Crag",
-    circlet: "Mask of Solitude Basalt"
+    flower: "磐陀裂生之花",
+    plume: "嵯峨群峰之翼",
+    sands: "星罗圭壁之晷",
+    goblet: "巉岩琢塑之樽",
+    circlet: "不动玄石之相"
   },
   icons: {
     flower,
@@ -21,11 +21,11 @@ let artifact = {
   },
   setEffects: {
     2: {
-      text: <span>Gain a 15% <span className="text-geo">Geo DMG Bonus</span></span>,
+      text: <span>获得15%<span className="text-geo">岩元素伤害加成</span>。</span>,
       stats: { geo_dmg_: 15 }
     },
     4: {
-      text: "Upon obtaining an Elemental Shard created through a Crystallize Reaction, all party members gain 35% DMG to that particular element for 10s. Only one form of Elemental DMG can be gained in this manner at any one time.",
+      text: "获得元素反应形成的晶片时，队伍中所有角色获得35%对应元素伤害加成，持续10秒。同时只能通过该效果获得一种元素伤害加成。",
       conditional: [{//TODO all party conditional
         type: "artifact",
         condition: "Pyro",

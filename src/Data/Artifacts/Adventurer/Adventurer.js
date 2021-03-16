@@ -5,13 +5,13 @@ import goblet from './Item_Adventurer\'s_Golden_Goblet.png'
 import circlet from './Item_Adventurer\'s_Bandana.png'
 import DisplayPercent from '../../../Components/DisplayPercent'
 let artifact = {
-  name: "Adventurer", rarity: [3],
+  name: "冒险家", rarity: [3],
   pieces: {
-    flower: "Adventurer's Flower",
-    plume: "Adventurer's Tail Feather",
-    sands: "Adventurer's Pocket Watch",
-    goblet: "Adventurer's Golden Goblet",
-    circlet: "Adventurer's Bandana"
+    flower: "冒险家之花",
+    plume: "冒险家尾羽",
+    sands: "冒险家怀表",
+    goblet: "冒险家之花",
+    circlet: "冒险家头带"
   },
   icons: {
     flower,
@@ -22,11 +22,11 @@ let artifact = {
   },
   setEffects: {
     2: {
-      text: "Max HP increased by 1,000.",
+      text: "生命值上限提升1000点。",
       stats: { hp: 1000 }
     },
     4: {
-      text: (charFinalStats) => <span>Opening chest regenerates 30% Max HP{DisplayPercent(30, charFinalStats, "finalHP")} over 5s.</span>,
+      text: (charFinalStats) => <span>开启各类宝箱后5秒内，持续恢复30%生命值{DisplayPercent(30, charFinalStats, "finalHP")}。</span>,
     }
   }
 }
