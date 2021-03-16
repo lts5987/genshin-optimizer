@@ -5,68 +5,68 @@ const StatData = {
   flat: { name: "", default: 1 },
 
   // Character Stats
-  characterHP: { name: "HP", pretty: "Character Base HP", const: true },
-  characterDEF: { name: "DEF", pretty: "Character Base DEF", const: true },
-  characterATK: { name: "ATK", pretty: "Character Base ATK", const: true },
-  characterEle: { name: "Character Element Key", default: "anemo", const: true },
-  characterLevel: { name: "Character Level", default: 1, const: true },
+  characterHP: { name: "生命力", pretty: "角色基础生命力", const: true },
+  characterDEF: { name: "防御力", pretty: "角色基础防御力", const: true },
+  characterATK: { name: "攻击力", pretty: "角色基础攻击力", const: true },
+  characterEle: { name: "角色元素", default: "anemo", const: true },
+  characterLevel: { name: "角色等级", default: 1, const: true },
 
   // Weapon Stats
-  weaponATK: { name: "Weapon ATK", pretty: "ATK Weapon", const: true },
+  weaponATK: { name: "武器攻击力", pretty: "武器攻击力", const: true },
 
   // Character & Weapon Stats
-  baseATK: { name: "ATK", pretty: "ATK Base", const: true }, // characterATK + weaponATK
+  baseATK: { name: "攻击力", pretty: "基础攻击力", const: true }, // characterATK + weaponATK
 
   // Weapon & Artifact Stats
-  hp: { name: "HP", pretty: "Flat HP" },//flat hp
-  hp_: { name: "HP", unit: "%", pretty: "HP Bonus" },
-  atk: { name: "ATK", pretty: "Flat ATK" },
-  atk_: { name: "ATK", unit: "%", pretty: "ATK Bonus" },
-  def: { name: "DEF", pretty: "Flat DEF" },
-  def_: { name: "DEF", unit: "%", pretty: "DEF Bonus" },
-  dmg_: { name: "All DMG Bonus", unit: "%" },
+  hp: { name: "生命力", pretty: "固定生命力" },//flat hp
+  hp_: { name: "生命力", unit: "%", pretty: "生命加成" },
+  atk: { name: "攻击力", pretty: "固定攻击力" },
+  atk_: { name: "攻击力", unit: "%", pretty: "攻击力加成" },
+  def: { name: "防御力", pretty: "固定防御力" },
+  def_: { name: "防御力", unit: "%", pretty: "防御力加成" },
+  dmg_: { name: "全伤害加成", unit: "%" },
 
   // Attack-related Character, Weapon & Artifact Stats
-  finalHP: { name: "HP", pretty: "HP" },
-  finalATK: { name: "ATK", pretty: "ATK" },
-  finalDEF: { name: "DEF", pretty: "DEF" },
+  finalHP: { name: "生命力", pretty: "生命力" },
+  finalATK: { name: "攻击力", pretty: "攻击力" },
+  finalDEF: { name: "防御力", pretty: "防御力" },
 
-  eleMas: { name: "Elemental Mastery", },
-  enerRech_: { name: "Energy Recharge", unit: "%" },
-  critRate_: { name: "CRIT Rate", unit: "%" },
+  eleMas: { name: "元素精通", },
+  enerRech_: { name: "元素充能效率", unit: "%" },
+  critRate_: { name: "暴击率", unit: "%" },
 
-  critDMG_: { name: "CRIT DMG", unit: "%" },
-  weakspotDMG_: { name: "Weakspot DMG", unit: "%" },
+  critDMG_: { name: "暴击伤害", unit: "%" },
+  weakspotDMG_: { name: "弱点伤害", unit: "%" },
 
   // Misc. Stats
-  heal_: { name: "Healing Bonus", unit: "%" },
-  incHeal_: { name: "Incoming Healing Bonus", unit: "%" },
-  powShield_: { name: "Shield Strength", unit: "%" },
-  cdRed_: { name: "CD Red.", unit: "%" },
-  skillCDRed_: { name: "Ele. Skill CD Red.", unit: "%" },
-  burstCDRed_: { name: "Ele. Burst CD Red.", unit: "%" },
-  moveSPD_: { name: "Movement SPD", unit: "%" },
-  atkSPD_: { name: "ATK SPD", unit: "%" },
-  stamina: { name: "Stamina" },
-  staminaDec_: { name: "Stamina Consumption Dec.", unit: "%" },
-  staminaGlidingDec_: { name: "Gliding Stamina Consumption Dec.", unit: "%" },
-  staminaChargedDec_: { name: "Charged Attack Stamina Consumption Dec.", unit: "%" },
+  heal_: { name: "治疗加成", unit: "%" },
+  incHeal_: { name: "受治疗加成", unit: "%" },
+  powShield_: { name: "护盾强效", unit: "%" },
+  cdRed_: { name: "冷却缩减", unit: "%" },
+  skillCDRed_: { name: "元素战技冷却缩减", unit: "%" },
+  burstCDRed_: { name: "元素爆发冷却缩减", unit: "%" },
+  moveSPD_: { name: "移动速度", unit: "%" },
+  atkSPD_: { name: "攻击速度", unit: "%" },
+  stamina: { name: "体力" },
+  staminaDec_: { name: "体力消耗降低", unit: "%" },
+  staminaGlidingDec_: { name: "滑翔体力消耗降低", unit: "%" },
+  staminaChargedDec_: { name: "重击体力消耗降低", unit: "%" },
 
-  heal_multi: { name: "Heal multiplier", unit: "multi" },
+  heal_multi: { name: "治疗倍率", unit: "multi" },
 
   // Reaction
-  amplificative_dmg_: { name: "Amplificative Reaction DMG Bonus", unit: "%" },
-  transformative_dmg_: { name: "Transformative Reaction DMG Bonus", unit: "%" },
-  crystalize_eleMas_: { name: "Crystalize Bonus (Elemental Mastery)", unit: "%", variant: "crystalize" },
-  crystalize_multi: { name: "Crystalize Multiplier", unit: "multi", const: true, variant: "crystalize" },
-  crystalize_dmg_: { name: "Crystalize Bonus", unit: "%", variant: "crystalize" },
-  crystalize_hit: { name: "Crystalize Shield HP", variant: "crystalize" },
-  burning_dmg_: { name: "Burning DMG Bonus", variant: "burning" },
+  amplificative_dmg_: { name: "强化元素反应伤害加成", unit: "%" },
+  transformative_dmg_: { name: "转变元素反应伤害加成", unit: "%" },
+  crystalize_eleMas_: { name: "结晶加成 (元素精通)", unit: "%", variant: "crystalize" },
+  crystalize_multi: { name: "结晶倍率", unit: "multi", const: true, variant: "crystalize" },
+  crystalize_dmg_: { name: "结晶加成", unit: "%", variant: "crystalize" },
+  crystalize_hit: { name: "结晶盾生命", variant: "crystalize" },
+  burning_dmg_: { name: "燃烧伤害加成", variant: "burning" },
 
   // Enemy
-  enemyLevel: { name: "Enemy Level", const: true },
-  enemyLevel_multi: { name: "Enemy Level RES Multiplier", unit: "multi", const: true },
-  enemyDEFRed_: { name: "Enemy DEF Reduction", unit: "%", const: true }
+  enemyLevel: { name: "敌人等级", const: true },
+  enemyLevel_multi: { name: "敌人等级抗性倍率", unit: "multi", const: true },
+  enemyDEFRed_: { name: "敌人防御抗性", unit: "%", const: true }
 }
 const Formulas = {
   // Basic Stats
@@ -106,9 +106,9 @@ function resMultiplier(res) {
 }
 
 Object.entries(hitMoves).forEach(([move, moveName]) => {
-  StatData[`${move}_dmg_`] = { name: `${moveName} DMG Bonus`, unit: "%" }
-  StatData[`${move}_critRate_`] = { name: `${moveName} CRIT Rate Bonus`, unit: "%" }
-  StatData[`final_${move}_critRate_`] = { name: `${moveName} CRIT Rate`, unit: "%" }
+  StatData[`${move}_dmg_`] = { name: `${moveName}伤害加成`, unit: "%" }
+  StatData[`${move}_critRate_`] = { name: `${moveName}暴击率加成`, unit: "%" }
+  StatData[`final_${move}_critRate_`] = { name: `${moveName}暴击率`, unit: "%" }
 
   Formulas[`final_${move}_critRate_`] = (s) => clamp(s.critRate_ + s[`${move}_critRate_`], 0, 100)
 })
@@ -116,18 +116,18 @@ Object.entries(hitMoves).forEach(([move, moveName]) => {
 Object.entries(hitElements).forEach(([ele, { name: eleName }]) => {
   const opt = { variant: ele }
   // DONT CHANGE. needed for screenshot parsing
-  StatData[`${ele}_dmg_`] = { name: `${eleName} DMG Bonus`, unit: "%", ...opt }
-  StatData[`${ele}_res_`] = { name: `${eleName} DMG RES`, unit: "%", ...opt }
+  StatData[`${ele}_dmg_`] = { name: `${eleName}伤害加成`, unit: "%", ...opt }
+  StatData[`${ele}_res_`] = { name: `${eleName}伤害抗性`, unit: "%", ...opt }
 
-  StatData[`${ele}_enemyRes_`] = { name: `Enemy ${eleName} DMG RES`, unit: "%", default: 10, const: true, ...opt }
-  StatData[`${ele}_enemyImmunity`] = { name: `Enemy ${eleName} Immunity`, default: false, const: true, ...opt }
+  StatData[`${ele}_enemyRes_`] = { name: `敌人${eleName}伤害抗性`, unit: "%", default: 10, const: true, ...opt }
+  StatData[`${ele}_enemyImmunity`] = { name: `敌人${eleName}免疫`, default: false, const: true, ...opt }
 
-  StatData[`${ele}_enemyRes_multi`] = { name: `Enemy ${eleName} RES Multiplier`, unit: "multi", const: true, ...opt }
-  StatData[`${ele}_bonus_multi`] = { name: `${eleName} Attack Bonus DMG Multiplier`, unit: "multi", ...opt }
+  StatData[`${ele}_enemyRes_multi`] = { name: `敌人${eleName}抗性倍率`, unit: "multi", const: true, ...opt }
+  StatData[`${ele}_bonus_multi`] = { name: `${eleName}攻击加成伤害倍率`, unit: "multi", ...opt }
 
   Object.entries(hitTypes).forEach(([type, typeName]) => {
-    StatData[`${ele}_elemental_${type}`] = { name: `${eleName} Attack ${typeName}`, ...opt }
-    StatData[`${ele}_elemental_${type}_multi`] = { name: `${eleName} Attack ${typeName} Multiplier`, unit: "multi" }
+    StatData[`${ele}_elemental_${type}`] = { name: `${eleName}攻击${typeName}`, ...opt }
+    StatData[`${ele}_elemental_${type}_multi`] = { name: `${eleName}攻击${typeName} Multiplier`, unit: "multi" }
 
     Formulas[`${ele}_elemental_${type}`] = (s) => s.finalATK * s[`${ele}_elemental_${type}_multi`]
   })
@@ -144,7 +144,7 @@ Object.entries(hitMoves).forEach(([move, moveName]) => {
     const opt = { variant: ele }
     Object.entries(hitTypes).forEach(([type, typeName]) => {
       StatData[`${ele}_${move}_${type}`] = { name: `${moveName} ${typeName}`, ...opt }
-      StatData[`${ele}_${move}_${type}_multi`] = { name: `${moveName} ${typeName} Multiplier`, unit: "multi", ...opt }
+      StatData[`${ele}_${move}_${type}_multi`] = { name: `${moveName} ${typeName}倍率`, unit: "multi", ...opt }
 
       Formulas[`${ele}_${move}_${type}`] = (s) => s.finalATK * s[`${ele}_${move}_${type}_multi`]
     })
@@ -157,19 +157,19 @@ Object.entries(hitMoves).forEach(([move, moveName]) => {
 
 Object.entries(transformativeReactions).forEach(([reaction, { name, variants }]) => {
   const opt = { variant: reaction }
-  StatData[`${reaction}_dmg_`] = { name: `${name} DMG Bonus`, unit: "%", ...opt }
-  StatData[`${reaction}_multi`] = { name: `${name} Multiplier`, unit: "multi", const: true, ...opt }
+  StatData[`${reaction}_dmg_`] = { name: `${name}伤害加成`, unit: "%", ...opt }
+  StatData[`${reaction}_multi`] = { name: `${name}倍率`, unit: "multi", const: true, ...opt }
 
   Formulas[`${reaction}_multi`] = (s, c) => ReactionMatrix[reaction].reduce((accu, val, i) => accu + val * Math.pow(c.characterLevel, i), 0)
   if (Object.keys(variants).length === 1) {
     const [ele] = Object.keys(variants), opt = { variant: reaction }
-    StatData[`${reaction}_hit`] = { name: `${name} DMG`, ...opt }
+    StatData[`${reaction}_hit`] = { name: `${name}伤害`, ...opt }
     Formulas[`${reaction}_hit`] = (s, c) => (100 + s.transformative_dmg_ + s[`${reaction}_dmg_`]) / 100 * c[`${reaction}_multi`] * c[`${ele}_enemyRes_multi`]
   } else {
     Object.entries(variants).forEach(([ele, baseMulti]) => {
       const opt = { variant: ele }
 
-      StatData[`${ele}_${reaction}_hit`] = { name: `${hitElements[ele].name} ${name} DMG`, ...opt }
+      StatData[`${ele}_${reaction}_hit`] = { name: `${hitElements[ele].name} ${name}伤害`, ...opt }
       Formulas[`${ele}_${reaction}_hit`] = (s, c) => (100 + s.transformative_dmg_ + s[`${reaction}_dmg_`]) / 100 * c[`${reaction}_multi`] * c[`${ele}_enemyRes_multi`]
     })
   }
@@ -177,9 +177,9 @@ Object.entries(transformativeReactions).forEach(([reaction, { name, variants }])
 
 Object.entries(amplifyingReactions).forEach(([reaction, { name, variants }]) => {
   const opt = { variant: reaction }
-  StatData[`${reaction}_dmg_`] = { name: `${name} DMG Bonus`, unit: "%", ...opt }
+  StatData[`${reaction}_dmg_`] = { name: `${name}伤害加成`, unit: "%", ...opt }
   Object.entries(variants).forEach(([ele, baseMulti]) => {
-    StatData[`${ele}_${reaction}_multi`] = { name: `${name} Multiplier`, unit: "multi", ...opt }
+    StatData[`${ele}_${reaction}_multi`] = { name: `${name}倍率`, unit: "multi", ...opt }
     Formulas[`${ele}_${reaction}_multi`] = (s) => baseMulti * (100 + s.amplificative_dmg_ + s[`${reaction}_dmg_`]) / 100
     Object.entries(hitTypes).forEach(([type, typeName]) => {
       StatData[`${ele}_${reaction}_elemental_${type}`] = { name: `${name} ${typeName}`, ...opt }
