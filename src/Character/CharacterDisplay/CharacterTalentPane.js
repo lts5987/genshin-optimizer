@@ -213,9 +213,9 @@ function SkillDisplayCard(props) {
       header = <Card.Header>
         <Row>
           <Col xs="auto">
-            <DropdownButton title={`Talent Lv. ${talentLvlKey + 1}`}>
+            <DropdownButton title={`天赋等级${talentLvlKey + 1}`}>
               {[...Array(talentLimits[ascension]).keys()].map(i =>
-                <Dropdown.Item key={i} onClick={() => setTalentLevel(talentKey, i)}>Talent Lv. {i + levelBoost + 1}</Dropdown.Item>)}
+                <Dropdown.Item key={i} onClick={() => setTalentLevel(talentKey, i)}>天赋等级{i + levelBoost + 1}</Dropdown.Item>)}
             </DropdownButton>
           </Col>
           {infuseBtn}

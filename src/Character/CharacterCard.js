@@ -66,7 +66,7 @@ export default function CharacterCard({ characterKey, onEdit, onDelete, cardClas
           <Image src={Character.getThumb(characterKey)} className={`thumb-big grad-${Character.getStar(characterKey)}star p-0`} thumbnail />
         </Col>
         <Col>
-          <h3 className="mb-0">{`Lvl. ${Character.getStatValueWithOverride(character, "characterLevel")} C${constellation}`}</h3>
+          <h3 className="mb-0">{`等级${Character.getStatValueWithOverride(character, "characterLevel")} C${constellation}`}</h3>
           <h5 className="mb-0"><Stars stars={Character.getStar(characterKey)} colored /></h5>
           <h2 className="mb-0"><Image src={Assets.elements[elementKey]} className="inline-icon" /> <Image src={Assets.weaponTypes?.[weaponTypeKey]} className="inline-icon" /></h2>
         </Col>
@@ -74,7 +74,7 @@ export default function CharacterCard({ characterKey, onEdit, onDelete, cardClas
       <Row className="mb-2">
         <Col>
           <h6 className="mb-0">{weaponName}{weaponPassiveName && `(${weapon.refineIndex + 1})`} {weaponLevelName}</h6>
-          <span>ATK: {weaponMainVal}  {weaponPassiveName && <span>{Stat.getStatName(weaponSubKey)}: {weaponSubVal}{Stat.getStatUnit(weaponSubKey)}</span>}</span>
+          <span>攻击力: {weaponMainVal}  {weaponPassiveName && <span>{Stat.getStatName(weaponSubKey)}: {weaponSubVal}{Stat.getStatUnit(weaponSubKey)}</span>}</span>
         </Col>
       </Row>
       <Row>

@@ -177,7 +177,7 @@ export default class CharacterDisplayCard extends React.Component {
                 <h6 className="d-inline">{Character.getlevelNames(levelKey)} </h6>
               }>
                 <Dropdown.ItemText>
-                  <span>Select Base Stat Template</span>
+                  <span>选择基本属性模板</span>
                 </Dropdown.ItemText>
                 {Character.getlevelKeys().map(lvlKey =>
                   <Dropdown.Item key={lvlKey} onClick={() => this.setLevelKey(lvlKey)}>
@@ -190,10 +190,10 @@ export default class CharacterDisplayCard extends React.Component {
           {newBuild ? <Col xs="auto">
             <ButtonGroup>
               <Button variant={compareAgainstEquipped ? "primary" : "success"} disabled={!compareAgainstEquipped} onClick={() => this.setState({ compareAgainstEquipped: false })}>
-                <small>Show New artifact Stats</small>
+                <small>显示新圣遗物属性</small>
               </Button>
               <Button variant={!compareAgainstEquipped ? "primary" : "success"} disabled={compareAgainstEquipped} onClick={() => this.setState({ compareAgainstEquipped: true })}>
-                <small>Compare against equipped artifact</small>
+                <small>对比当前装备圣遗物</small>
               </Button>
             </ButtonGroup>
           </Col> : null}
@@ -207,25 +207,25 @@ export default class CharacterDisplayCard extends React.Component {
         <Tab.Container defaultActiveKey={tabName ? tabName : (newBuild ? "newartifacts" : "character")} mountOnEnter={true} unmountOnExit={true}>
           <Nav variant="pills" className="mb-2 ml-2">
             <Nav.Item >
-              <Nav.Link eventKey="character">Character</Nav.Link>
+              <Nav.Link eventKey="character">角色</Nav.Link>
             </Nav.Item>
             {newBuild ? <Nav.Item>
-              <Nav.Link eventKey="newartifacts">New Artifacts</Nav.Link>
+              <Nav.Link eventKey="newartifacts">新圣遗物</Nav.Link>
             </Nav.Item> : null}
             <Nav.Item>
-              <Nav.Link eventKey="artifacts">{newBuild ? "Current Artifacts" : "Artifacts"}</Nav.Link>
+              <Nav.Link eventKey="artifacts">{newBuild ? "目前的圣遗物" : "圣遗物"}</Nav.Link>
             </Nav.Item>
             <Nav.Item>
               {(process.env.NODE_ENV !== "development" && !Character.hasTalentPage(characterKey)) ?
                 <WIPComponent>
-                  <Nav.Link eventKey="talent" disabled>Talents <Badge variant="warning">WIP</Badge></Nav.Link>
+                  <Nav.Link eventKey="talent" disabled>天赋<Badge variant="warning">WIP</Badge></Nav.Link>
                 </WIPComponent> :
-                <Nav.Link eventKey="talent">Talents</Nav.Link>
+                <Nav.Link eventKey="talent">天赋</Nav.Link>
               }
             </Nav.Item>
             <Nav.Item>
               <WIPComponent>
-                <Nav.Link eventKey="team" disabled>Team <Badge variant="warning">WIP</Badge></Nav.Link>
+                <Nav.Link eventKey="team" disabled>队伍<Badge variant="warning">WIP</Badge></Nav.Link>
               </WIPComponent>
             </Nav.Item>
           </Nav>

@@ -1,22 +1,22 @@
 import ElementalData from "./Data/ElementalData";
 
-export const hitTypes = { hit: "DMG", avgHit: "Avg. DMG", critHit: "CRIT Hit DMG" }
-export const hitMoves = { normal: "Normal Att.", charged: "Charged Att.", plunging: "Plunging Att.", skill: "Ele. Skill", burst: "Ele. Burst" }
+export const hitTypes = { hit: "伤害", avgHit: "平均伤害", critHit: "暴击伤害" }
+export const hitMoves = { normal: "普通攻击", charged: "重击", plunging: "落下攻击", skill: "元素战技", burst: "元素爆发" }
 export const hitElements = ElementalData
 export const transformativeReactions = {
-  overloaded: { name: "Overloaded", variants: { pyro: 4 } },
-  shattered: { name: "Shattered", variants: { physical: 3 } },
-  electrocharged: { name: "Electro-Charged", variants: { electro: 2.4 } },
-  superconduct: { name: "Superconduct", variants: { cryo: 1 } },
-  swirl: { name: "Swirl", variants: { pyro: 1.2, hydro: 1.2, electro: 1.2, cryo: 1.2 } },
+  overloaded: { name: "超载", variants: { pyro: 4 } },
+  shattered: { name: "碎冰", variants: { physical: 3 } },
+  electrocharged: { name: "感电", variants: { electro: 2.4 } },
+  superconduct: { name: "超导", variants: { cryo: 1 } },
+  swirl: { name: "扩散", variants: { pyro: 1.2, hydro: 1.2, electro: 1.2, cryo: 1.2 } },
 }
 export const amplifyingReactions = {
-  vaporize: { name: "Vaporize", variants: { pyro: 1.5, hydro: 2 } },
-  melt: { name: "Melt", variants: { pyro: 2, cryo: 1.5 } },
+  vaporize: { name: "蒸发", variants: { pyro: 1.5, hydro: 2 } },
+  melt: { name: "融化", variants: { pyro: 2, cryo: 1.5 } },
 }
 export const otherReactions = {
-  burning: "Burning",
-  crystalize: "Crystalize",
+  burning: "燃烧",
+  crystalize: "结晶",
 }
 export const ReactionMatrix = {
   overloaded: [37.4371542286, -4.3991155718, 0.9268181504, -0.0314790536, 0.0005189440, -0.0000027646],

@@ -36,7 +36,7 @@ export default function CharacterOverviewPane(props) {
               {editLevel ? <Row><Col>
                 <InputGroup >
                   <InputGroup.Prepend>
-                    <InputGroup.Text>Lvl.</InputGroup.Text>
+                    <InputGroup.Text>等级</InputGroup.Text>
                   </InputGroup.Prepend>
                   <CustomFormControl onValueChange={(val) => setOverride("characterLevel", clamp(val, 1, 90))} value={level} />
                   <InputGroup.Append>
@@ -144,7 +144,7 @@ function WeaponStatsEditorCard(props) {
     <Card.Header>
       <Row>
         <Col>
-          <span>Weapon</span>
+          <span>武器</span>
         </Col>
         <Col xs="auto">
           <Button variant="info" size="sm" onClick={() => setShowDescription(!showDescription)}>
@@ -153,7 +153,7 @@ function WeaponStatsEditorCard(props) {
         </Col>
         {editable ? <Col xs="auto" >
           <Button variant={editing ? "danger" : "info"} onClick={() => SetEditing(!editing)} size="sm">
-            <span><FontAwesomeIcon icon={editing ? faSave : faEdit} /> {editing ? "EXIT" : "EDIT"}</span>
+            <span><FontAwesomeIcon icon={editing ? faSave : faEdit} /> {editing ? "退出" : "修改"}</span>
           </Button>
         </Col> : null}
       </Row>
@@ -181,7 +181,7 @@ function WeaponStatsEditorCard(props) {
             <Col lg="auto" xs={6} className="mb-2 pr-0">
               <DropdownButton title={Weapon.getLevelName(weapon.levelKey)}>
                 <Dropdown.ItemText>
-                  <span>Select Weapon Level</span>
+                  <span>选择武器等级</span>
                 </Dropdown.ItemText>
                 {Object.entries(LevelNameData).map(([key, name]) =>
                   <Dropdown.Item key={key} onClick={() => setStateWeapon("levelKey", key)}>
@@ -190,20 +190,20 @@ function WeaponStatsEditorCard(props) {
               </DropdownButton>
             </Col>
             {weaponPassiveName && <Col lg="auto" xs={6} className="mb-2">
-              <DropdownButton title={`Refinement ${weapon.refineIndex + 1}`} className="w-100">
+              <DropdownButton title={`精炼${weapon.refineIndex + 1}`} className="w-100">
                 <Dropdown.ItemText>
-                  <span>Select Weapon Refinement</span>
+                  <span>选择武器精炼度</span>
                 </Dropdown.ItemText>
                 <Dropdown.Divider />
                 {[...Array(5).keys()].map(key =>
                   <Dropdown.Item key={key} onClick={() => setStateWeapon("refineIndex", key)}>
-                    {`Refinement ${key + 1}`}
+                    {`精炼${key + 1}`}
                   </Dropdown.Item>)}
               </DropdownButton>
             </Col>}
             <Col xs={12} className="mb-2">
               <StatInput
-                name={<span><FontAwesomeIcon icon={faGavel} className="mr-2" />ATK</span>}
+                name={<span><FontAwesomeIcon icon={faGavel} className="mr-2" />攻击力</span>}
                 placeholder="Weapon Attack"
                 value={weaponDisplayMainVal}
                 percent={false}
@@ -225,7 +225,7 @@ function WeaponStatsEditorCard(props) {
         </Col> :
           <Col>
             <Row className="mb-2"><Col>
-              <h5 className="mb-0">{Weapon.getWeaponName(weapon.key)} {Weapon.getLevelName(weapon.levelKey)} {weaponPassiveName && `(Refinement ${weapon.refineIndex + 1})`}</h5>
+              <h5 className="mb-0">{Weapon.getWeaponName(weapon.key)} {Weapon.getLevelName(weapon.levelKey)} {weaponPassiveName && `(精炼${weapon.refineIndex + 1})`}</h5>
               <small ><Stars stars={Weapon.getWeaponRarity(weapon.key)} /></small>
             </Col></Row>
             <Row>
@@ -282,11 +282,11 @@ function MainStatsCards(props) {
       <Card.Header>
         <Row>
           <Col>
-            <span>Main Base Stats</span>
+            <span>主基础属性</span>
           </Col>
           {editable ? <Col xs="auto" >
             <Button variant={editing ? "danger" : "info"} onClick={() => SetEditing(!editing)} size="sm">
-              <span><FontAwesomeIcon icon={editing ? faSave : faEdit} /> {editing ? "EXIT" : "EDIT"}</span>
+              <span><FontAwesomeIcon icon={editing ? faSave : faEdit} /> {editing ? "退出" : "修改"}</span>
             </Button>
           </Col> : null}
         </Row>
@@ -334,7 +334,7 @@ function MainStatsCards(props) {
           <Row className="mb-2">
             {displayStatKeys.map(statKey => <Col xs={12} lg={6} key={statKey} ><StatDisplay statKey={statKey} {...displayNewBuildProps} /></Col>)}
             {specializedStatVal ? <Col lg={6} xs={12}>
-              <span><b>Specialized:</b> <span className={Character.hasOverride(character, "specializedStatKey") ? "text-warning" : ""}>{Stat.getStatName(specializedStatKey)}</span></span>
+              <span><b>特性:</b> <span className={Character.hasOverride(character, "specializedStatKey") ? "text-warning" : ""}>{Stat.getStatName(specializedStatKey)}</span></span>
               <span className={`float-right ${Character.hasOverride(character, "specializedStatVal") ? "text-warning" : ""}`}>{`${specializedStatVal}${specializedStatUnit}`}</span>
             </Col> : null}
           </Row>
@@ -345,11 +345,11 @@ function MainStatsCards(props) {
       <Card.Header>
         <Row>
           <Col>
-            <span>Other Stats</span>
+            <span>进阶属性</span>
           </Col>
           {editable && <Col xs="auto" >
             <Button variant={editingOther ? "danger" : "info"} onClick={() => SetEditingOther(!editingOther)} size="sm">
-              <span><FontAwesomeIcon icon={editingOther ? faSave : faEdit} /> {editingOther ? "EXIT" : "EDIT"}</span>
+              <span><FontAwesomeIcon icon={editingOther ? faSave : faEdit} /> {editingOther ? "退出" : "修改"}</span>
             </Button>
           </Col>}
         </Row>
@@ -380,11 +380,11 @@ function MainStatsCards(props) {
       <Card.Header>
         <Row>
           <Col>
-            <span>Misc Stats</span>
+            <span>其他属性</span>
           </Col>
           {editable && <Col xs="auto" >
             <Button variant={editingMisc ? "danger" : "info"} onClick={() => SetEditingMisc(!editingMisc)} size="sm">
-              <span><FontAwesomeIcon icon={editingMisc ? faSave : faEdit} /> {editingMisc ? "EXIT" : "EDIT"}</span>
+              <span><FontAwesomeIcon icon={editingMisc ? faSave : faEdit} /> {editingMisc ? "退出" : "修改"}</span>
             </Button>
           </Col>}
         </Row>

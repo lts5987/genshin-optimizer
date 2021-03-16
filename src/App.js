@@ -31,12 +31,11 @@ function App() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Link as={Link} to="/artifact">
-                  Artifacts</Nav.Link>
-                <Nav.Link as={Link} to="/character">Characters</Nav.Link>
-                <Nav.Link as={Link} to="/build">Builds</Nav.Link>
-                <Nav.Link as={Link} to="/tools">Tools</Nav.Link>
-                {process.env.NODE_ENV === "development" && <Nav.Link as={Link} to="/test">TEST</Nav.Link>}
+                <Nav.Link as={Link} to="/artifact">圣遗物</Nav.Link>
+                <Nav.Link as={Link} to="/character">角色</Nav.Link>
+                <Nav.Link as={Link} to="/build">搭配</Nav.Link>
+                <Nav.Link as={Link} to="/tools">工具</Nav.Link>
+                {process.env.NODE_ENV === "development" && <Nav.Link as={Link} to="/test">测试</Nav.Link>}
               </Nav>
               <Nav>
                 <Nav.Link href={process.env.REACT_APP_PAYPAL_LINK} target="_blank" rel="noreferrer" onClick={() => ReactGA.outboundLink({ label: "patreon" }, () => { })}>

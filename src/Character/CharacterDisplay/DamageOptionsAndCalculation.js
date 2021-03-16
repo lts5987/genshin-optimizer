@@ -147,7 +147,7 @@ export default function DamageOptionsAndCalculation({ character, character: { hi
           <Row>
             <Col xs={12} xl={6} className="mb-2">
               <StatInput
-                name={<b>Enemy Level</b>}
+                name={<b>敌人等级</b>}
                 value={Character.getStatValueWithOverride(character, "enemyLevel")}
                 placeholder={Stat.getStatNameRaw("enemyLevel")}
                 defaultValue={Character.getBaseStatValue(character, "enemyLevel")}
@@ -161,7 +161,7 @@ export default function DamageOptionsAndCalculation({ character, character: { hi
               return <Col xs={12} xl={6} key={eleKey} className="mb-2">
                 <StatInput
                   prependEle={<Button variant={eleKey} onClick={() => setOverride(immunityStatKey, !elementImmunity)} className="text-darkcontent">
-                    <FontAwesomeIcon icon={elementImmunity ? faCheckSquare : faSquare} className="fa-fw" /> Immunity
+                    <FontAwesomeIcon icon={elementImmunity ? faCheckSquare : faSquare} className="fa-fw" /> 免疫
                 </Button>}
                   name={<b>{Stat.getStatNameRaw(statKey)}</b>}
                   value={Character.getStatValueWithOverride(character, statKey)}

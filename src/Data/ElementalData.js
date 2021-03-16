@@ -1,11 +1,11 @@
 const ElementalData = {
-  physical: { name: "Physical" },
-  anemo: { name: "Anemo" },
-  geo: { name: "Geo" },
-  electro: { name: "Electro" },
-  hydro: { name: "Hydro" },
-  pyro: { name: "Pyro" },
-  cryo: { name: "Cryo" },
-  // dendro: { name: "Dendro" }
+  physical: { name: "物理" },
+  anemo: { name: "风" },
+  geo: { name: "岩" },
+  electro: { name: "雷" },
+  hydro: { name: "水" },
+  pyro: { name: "火" },
+  cryo: { name: "冰" },
+  // dendro: { name: "草" }
 }
 export default ElementalData
