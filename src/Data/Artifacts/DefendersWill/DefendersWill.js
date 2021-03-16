@@ -4,13 +4,13 @@ import sands from './Item_Guardian\'s_Clock.png'
 import goblet from './Item_Guardian\'s_Vessel.png'
 import circlet from './Item_Guardian\'s_Band.png'
 let artifact = {
-  name: "Defender's Will", rarity: [3, 4],
+  name: "守护之心", rarity: [3, 4],
   pieces: {
-    flower: "Guardian's Flower",
-    plume: "Guardian's Sigil",
-    sands: "Guardian's Clock",
-    goblet: "Guardian's Vessel",
-    circlet: "Guardian's Band"
+    flower: "守护之花",
+    plume: "守护徽印",
+    sands: "守护座钟",
+    goblet: "守护之皿",
+    circlet: "守护束带"
   },
   icons: {
     flower,
@@ -21,11 +21,11 @@ let artifact = {
   },
   setEffects: {
     2: {
-      text: "Base DEF +30%",
+      text: "防御力提高30%。",
       stats: { def_: 30 }
     },
     4: {
-      text: "Increases Elemental RES by 30% for each element present in the party.",
+      text: "队伍里每有不同一种元素类型的自己的角色，自身获得30%相应的元素抗性。",
       conditional: [//TODO all party conditional
         {
           type: "artifact",

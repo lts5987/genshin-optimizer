@@ -4,13 +4,13 @@ import sands from './Item_Gladiator\'s_Longing.png'
 import goblet from './Item_Gladiator\'s_Intoxication.png'
 import circlet from './Item_Gladiator\'s_Triumphus.png'
 let artifact = {
-  name: "Gladiator's Finale", rarity: [4, 5],
+  name: "角斗士的终幕礼", rarity: [4, 5],
   pieces: {
-    flower: "Gladiator's Nostalgia",
-    plume: "Gladiator's Destiny",
-    sands: "Gladiator's Longing",
-    goblet: "Gladiator's Intoxication",
-    circlet: "Gladiator's Triumphus"
+    flower: "角斗士的留恋",
+    plume: "角斗士的归宿",
+    sands: "角斗士的希冀",
+    goblet: "角斗士的酣醉",
+    circlet: "角斗士的凯旋"
   },
   icons: {
     flower,
@@ -21,11 +21,11 @@ let artifact = {
   },
   setEffects: {
     2: {
-      text: "ATK +18%",
+      text: "攻击力提高18%。",
       stats: { atk_: 18 }
     },
     4: {
-      text: "If the wielder of this artifact set uses a Sword, Claymore or Polearm, increases their Normal Attack DMG by 35%.",
+      text: "装备该圣遗物套装的角色为单手剑、双手剑、长柄武器角色时，角色普通攻击造成的伤害提高35%。",
       conditional: {
         type: "artifact",
         sourceKey: "GladiatorsFinale_4",
