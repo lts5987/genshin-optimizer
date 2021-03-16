@@ -4,13 +4,13 @@ import sands from './Item_Berserker\'s_Timepiece.png'
 import goblet from './Item_Berserker\'s_Bone_Goblet.png'
 import circlet from './Item_Berserker\'s_Battle_Mask.png'
 let artifact = {
-  name: "Berserker", rarity: [3, 4],
+  name: "战狂", rarity: [3, 4],
   pieces: {
-    flower: "Berserker's Rose",
-    plume: "Berserker's Indigo Feather",
-    sands: "Berserker's Timepiece",
-    goblet: "Berserker's Bone Goblet",
-    circlet: "Berserker's Battle Mask"
+    flower: "战狂的蔷薇",
+    plume: "战狂的翎羽",
+    sands: "战狂的时计",
+    goblet: "战狂的骨杯",
+    circlet: "战狂的鬼面"
   },
   icons: {
     flower,
@@ -21,11 +21,11 @@ let artifact = {
   },
   setEffects: {
     2: {
-      text: "CRIT Rate +12%",
+      text: "暴击率提高12%。",
       stats: { critRate_: 12 }
     },
     4: {
-      text: "When HP is below 70%, CRIT Rate increases by an additional 24%.",
+      text: "生命值低于70%时，暴击率额外提升24%。",
       conditional: {
         type: "artifact",
         sourceKey: "Berserker_4",

@@ -4,13 +4,13 @@ import sands from './Item_Witch\'s_End_Time.png'
 import goblet from './Item_Witch\'s_Heart_Flames.png'
 import circlet from './Item_Witch\'s_Scorching_Hat.png'
 let artifact = {
-  name: "Crimson Witch of Flames", rarity: [4, 5],
+  name: "炽烈的炎之魔女", rarity: [4, 5],
   pieces: {
-    flower: "Witch's Flower of Blaze",
-    plume: "Witch's Ever-Burning Plume",
-    sands: "Witch's End Time",
-    goblet: "Witch's Heart Flames",
-    circlet: "Witch's Scorching Hat"
+    flower: "魔女的炎之花",
+    plume: "魔女常燃之羽",
+    sands: "魔女破灭之时",
+    goblet: "魔女的心之火",
+    circlet: "焦灼的魔女帽"
   },
   icons: {
     flower,
@@ -21,11 +21,11 @@ let artifact = {
   },
   setEffects: {
     2: {
-      text: <span><span className="text-pyro">Pyro DMG Bonus</span> +15%</span>,
+      text: <span>获得15%<span className="text-pyro">火元素伤害加成</span>。</span>,
       stats: { pyro_dmg_: 15 }
     },
     4: {
-      text: "Increases Overloaded and Burning DMG by 40%. Increases Vaporize and Melt DMG by 15%. Using an Elemental Skill increases 2-Piece Set effects by 50% for 10s. Max 3 stacks.",
+      text: "超载、燃烧反应造成的伤害提升40%，蒸发、融化反应的加成系数提高15%。施放元素战技后的10秒内，二件套的效果提高50%，该效果最多叠加3次。",
       stats: {
         overloaded_dmg_: 40,
         burning_dmg_: 40,

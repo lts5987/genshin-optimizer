@@ -102,11 +102,8 @@ export default function UploadDisplay(props) {
     let [whiteparsed, substatOCRText, setOCRText] = await Promise.all(awaits)
 
     let setKey = parseSetKey(setOCRText)
-    console.log('setKey', setKey, setOCRText)
     let slotKey = parseSlotKey(whiteparsed)
-    console.log('whiteparsed', slotKey, whiteparsed)
     let substats = parseSubstat(substatOCRText)
-    console.log('substatOCRText', substats, substatOCRText)
     let level = NaN//looks like the level isnt consistently parsed. 
     let mainStatKey = parseMainStatKey(whiteparsed)
     let { mainStatValue, unit = "" } = parseMainStatvalue(whiteparsed)
@@ -517,7 +514,6 @@ function parseSubstat(recognition, defVal = null) {
       if (unit === "%") regex = new RegExp(name + "\\s*\\+\\s*(\\d+\\.\\d)%", "im");
       else regex = new RegExp(name + "\\s*\\+\\s*(\\d+,\\d+|\\d+)($|\\s)", "im");
       let match = regex.exec(text2)
-      console.log(match, text2)
       match && matches.push({ value: match[1], unit, key })
     })
   }
